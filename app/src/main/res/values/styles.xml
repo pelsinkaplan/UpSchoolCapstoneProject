@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="InputTextViewStyle">
+        <item name="android:background">#FFF8E3</item>
+        <item name="android:radius">40dp</item>
+    </style>
+</resources>

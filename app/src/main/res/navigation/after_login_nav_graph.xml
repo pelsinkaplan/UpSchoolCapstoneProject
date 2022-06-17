@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/after_login_nav_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.pelsinkaplan.upschoolcapstoneproject.ui.fragment.afterlogin.HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.pelsinkaplan.upschoolcapstoneproject.ui.fragment.afterlogin.ProductDetailFragment"
+        tools:layout="@layout/fragment_product_detail">
+        <argument
+            android:name="productId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.pelsinkaplan.upschoolcapstoneproject.ui.fragment.afterlogin.CategoriesFragment"
+        tools:layout="@layout/fragment_categories" >
+        <action
+            android:id="@+id/action_categoriesFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chartFragment"
+        android:name="com.pelsinkaplan.upschoolcapstoneproject.ui.fragment.afterlogin.ChartFragment"
+        tools:layout="@layout/fragment_chart" >
+        <action
+            android:id="@+id/action_chartFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.pelsinkaplan.upschoolcapstoneproject.ui.fragment.afterlogin.ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.pelsinkaplan.upschoolcapstoneproject.ui.fragment.afterlogin.ProductsFragment"
+        tools:layout="@layout/fragment_products" >
+        <action
+            android:id="@+id/action_productsFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+        <argument
+            android:name="category"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.pelsinkaplan.upschoolcapstoneproject.ui.fragment.afterlogin.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+</navigation>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "505814196014",
+    "project_id": "upschoolcapstoneproject",
+    "storage_bucket": "upschoolcapstoneproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505814196014:android:ad6050ddd87eafa7a5a4bf",
+        "android_client_info": {
+          "package_name": "com.pelsinkaplan.upschoolcapstoneproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505814196014-ga6392u1q0qi548vj1pis3bmdr5qb539.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzpnsrnGsYRm9RcJ6_o0mFycGiKP8pi4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "505814196014-ga6392u1q0qi548vj1pis3bmdr5qb539.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/before_login_nav_graph"
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.pelsinkaplan.upschoolcapstoneproject.ui.fragment.beforelogin.StartFragment"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.pelsinkaplan.upschoolcapstoneproject.ui.fragment.beforelogin.LoginFragment"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_afterLoginActivity"
+            app:destination="@id/afterLoginActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.pelsinkaplan.upschoolcapstoneproject.ui.fragment.beforelogin.RegisterFragment"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/afterLoginActivity"
+        android:name="com.pelsinkaplan.upschoolcapstoneproject.ui.activity.AfterLoginActivity"
+        tools:layout="@layout/activity_after_login" />
+</navigation>
