@@ -19,16 +19,40 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
+
 
                 <ImageView
                     android:id="@+id/advertisementImageView"
                     android:layout_width="0dp"
                     android:layout_height="500dp"
-                    android:src="@drawable/ic_advertisement"
+                    android:contentDescription="@string/advertisement_image"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/advertisement"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fashion_sale"
+                    android:textColor="@color/white"
+                    android:textSize="50sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/saleProductsButton"
+                    app:layout_constraintStart_toStartOf="@+id/saleProductsButton" />
+
+                <Button
+                    android:id="@+id/saleProductsButton"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="32dp"
+                    android:background="@drawable/button"
+                    android:text="@string/check"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/advertisementImageView"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"

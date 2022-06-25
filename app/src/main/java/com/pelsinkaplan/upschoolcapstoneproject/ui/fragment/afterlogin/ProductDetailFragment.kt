@@ -1,23 +1,22 @@
 package com.pelsinkaplan.upschoolcapstoneproject.ui.fragment.afterlogin
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.pelsinkaplan.upschoolcapstoneproject.R
-import com.pelsinkaplan.upschoolcapstoneproject.data.model.Product
-import com.pelsinkaplan.upschoolcapstoneproject.data.model.ProductChart
-import com.pelsinkaplan.upschoolcapstoneproject.databinding.FragmentHomeBinding
 import com.pelsinkaplan.upschoolcapstoneproject.databinding.FragmentProductDetailBinding
-import com.pelsinkaplan.upschoolcapstoneproject.service.room.ChartDatabase
-import com.pelsinkaplan.upschoolcapstoneproject.ui.adapter.ProductAdapter
-import com.pelsinkaplan.upschoolcapstoneproject.ui.viewmodel.afterlogin.HomeViewModel
 import com.pelsinkaplan.upschoolcapstoneproject.ui.viewmodel.afterlogin.ProductDetailViewModel
+import com.pelsinkaplan.upschoolcapstoneproject.data.model.Product
+import com.pelsinkaplan.upschoolcapstoneproject.service.room.FavoritesDatabase
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -29,6 +28,7 @@ import java.lang.Exception
 class ProductDetailFragment : Fragment() {
     private lateinit var binding: FragmentProductDetailBinding
     private lateinit var viewModel: ProductDetailViewModel
+    private lateinit var favoritesDatabase: FavoritesDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,94 +39,98 @@ class ProductDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentProductDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
+        favoritesDatabase = FavoritesDatabase.getFavoritesDatabase(requireContext())!!
+        val favoritesList = favoritesDatabase.getFavoritesDao().getAll()
         val args: ProductDetailFragmentArgs by navArgs()
-        val productId = args.productId
+        val product = args.product
+        val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
-        CoroutineScope(Dispatchers.Main).launch {
-            val response = viewModel.service(productId)!!
-            binding.apply {
-                productTitleCustomTextView.apply {
-                    setTextViewVisible()
-                    setTextViewText(response.title)
-                    setTextViewBold()
-                    setTextViewSize(20F)
-                }
-                productPriceCustomTextView.apply {
-                    setTextViewVisible()
-                    setTextViewText("$" + response.price)
-                    setTextViewBold()
-                    setTextViewSize(20F)
-                }
-                productDescriptionCustomTextView.apply {
-                    setTextViewVisible()
-                    setTextViewText(response.description)
-                    setTextViewSize(16F)
-                }
-                productImageCustomImageView.apply {
-                    Glide.with(this).load(response.image)
-                        .into(imageView)
-                    setImageViewVisible()
-                }
-                var state = false // This part will be edit
-                if (state) {
-                    addToFavoritesButton.setBackgroundResource(R.drawable.ic_favorite)
-                } else {
-                    addToFavoritesButton.setBackgroundResource(R.drawable.ic_not_favorite)
-                }
+        binding.apply {
+            productTitleCustomTextView.apply {
+                setTextViewVisible()
+                setTextViewText(product.title)
+                setTextViewBold()
+                setTextViewSize(20F)
+            }
+            productPriceCustomTextView.apply {
+                setTextViewVisible()
+                setTextViewText("$" + product.price)
+                setTextViewBold()
+                setTextViewSize(20F)
+            }
+            productDescriptionCustomTextView.apply {
+                setTextViewVisible()
+                setTextViewText(product.description)
+                setTextViewSize(16F)
+            }
+            bottomProductImageCustomImageView.apply {
+                Glide.with(this).load(product.image)
+                    .into(imageView)
+                setImageViewVisible()
+            }
+            topProductImageCustomImageView.apply {
+                Glide.with(this).load(product.image)
+                    .into(imageView)
+                setImageViewVisible()
+            }
 
-
-                addToChartButton.isEnabled = true
-                addToChartButton.setOnClickListener {
-                    val chartDatabase = ChartDatabase.getChartDatabase(requireContext())!!
-                    var amount = 1
-                    try {
-                        val chart = chartDatabase.getChartDao().getAll()
-
-                        for (productChart in chart) {
-                            if (productChart.id == response.id) {
-                                amount += productChart.amount
-                                chartDatabase.getChartDao().update(
-                                    ProductChart(
-                                        response.id,
-                                        response.title,
-                                        response.price,
-                                        response.image,
-                                        amount
-                                    )
-                                )
-                            } else {
-                                chartDatabase.getChartDao().insert(
-                                    ProductChart(
-                                        response.id,
-                                        response.title,
-                                        response.price,
-                                        response.image,
-                                        amount
-                                    )
-                                )
-                            }
-                        }
-                        if (chart.isEmpty())
-                            chartDatabase.getChartDao().insert(
-                                ProductChart(
-                                    response.id,
-                                    response.title,
-                                    response.price,
-                                    response.image,
-                                    amount
-                                )
-                            )
-                    } catch (e: Exception) {
-                        Timber.tag("Chart").e(e.message)
+            if (favoritesList.contains(product)) {
+                addToFavoritesButton.apply {
+                    setBackgroundResource(R.drawable.ic_favorite)
+                    setOnClickListener {
+                        favoritesDatabase.getFavoritesDao().delete(product)
+                        setBackgroundResource(R.drawable.ic_not_favorite)
                     }
                 }
+            } else {
+                addToFavoritesButton.apply {
+                    setBackgroundResource(R.drawable.ic_not_favorite)
+                    setOnClickListener {
+                        favoritesDatabase.getFavoritesDao().insert(product)
+                        setBackgroundResource(R.drawable.ic_favorite)
+                    }
+                }
+            }
+
+            addToChartButton.isEnabled = true
+            addToChartButton.setOnClickListener {
+                CoroutineScope(Dispatchers.Main).launch {
+                    val bag = viewModel.getUserBag(userId)!!
+                    var state = true
+                    for (item in bag) {
+                        if (item.title == product.title) {
+                            viewModel.deleteFromBag(item.id)
+                            item.count += 1
+                            product.count = item.count
+                            state = false
+                        }
+                    }
+                    if (state) {
+                        product.count = 1
+                    }
+                    viewModel.addToBag(userId, product)
+                }
+
+                binding.topProductImageCustomImageView.startAnimation(
+                    AnimationUtils.loadAnimation(
+                        requireContext(),
+                        R.anim.add_to_chart
+                    )
+                )
+                binding.bottomProductImageCustomImageView.startAnimation(
+                    AnimationUtils.loadAnimation(
+                        requireContext(),
+                        R.anim.product_detail_image_anim
+                    )
+                )
             }
         }
     }

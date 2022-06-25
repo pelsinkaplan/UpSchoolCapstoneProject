@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_loginFragment_to_afterLoginActivity"
             app:destination="@id/afterLoginActivity" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -36,4 +39,13 @@
         android:id="@+id/afterLoginActivity"
         android:name="com.pelsinkaplan.upschoolcapstoneproject.ui.activity.AfterLoginActivity"
         tools:layout="@layout/activity_after_login" />
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.pelsinkaplan.upschoolcapstoneproject.ui.fragment.beforelogin.ForgetPasswordFragment"
+        android:label="fragment_forget_password"
+        tools:layout="@layout/fragment_forget_password" >
+        <action
+            android:id="@+id/action_forgetPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

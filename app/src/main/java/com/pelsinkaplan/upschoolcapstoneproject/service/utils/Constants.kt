@@ -8,4 +8,6 @@ object Constants {
 
     const val BASE_URL = "https://fakestoreapi.com/"
 
+    const val CANER_BASE_URL = "https://canerture.com/api/ecommerce/"
+
 }

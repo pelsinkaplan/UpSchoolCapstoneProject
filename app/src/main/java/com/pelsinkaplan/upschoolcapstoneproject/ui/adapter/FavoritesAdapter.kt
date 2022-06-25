@@ -1,19 +1,24 @@
 package com.pelsinkaplan.upschoolcapstoneproject.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pelsinkaplan.upschoolcapstoneproject.data.model.Product
 import com.pelsinkaplan.upschoolcapstoneproject.databinding.ItemProductBinding
+import com.pelsinkaplan.upschoolcapstoneproject.ui.adapter.listener.OnProductNavigateClickListener
 import com.pelsinkaplan.upschoolcapstoneproject.ui.fragment.afterlogin.FavoritesFragmentDirections
-import com.pelsinkaplan.upschoolcapstoneproject.ui.fragment.afterlogin.HomeFragmentDirections
 
 /**
  * Created by Pelşin KAPLAN on 16.06.2022.
  */
-class FavoritesAdapter(var products: ArrayList<Product>) :
+class FavoritesAdapter(
+    var products: List<Product>,
+    private val onProductNavigateClickListener: OnProductNavigateClickListener
+) :
     RecyclerView.Adapter<ProductViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
@@ -22,18 +27,18 @@ class FavoritesAdapter(var products: ArrayList<Product>) :
         return ProductViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = products[position]
         holder.binding.apply {
+            if (product.sale_state == 1)
+                saleImageView.visibility = View.VISIBLE
             productTitleTextView.text = product.title
             productPriceTextView.text = "$" + product.price
             Glide.with(this.root).load(product.image).into(productImageView)
             productCardView.setOnClickListener {
-                val action =
-                    FavoritesFragmentDirections.actionFavoritesFragmentToProductDetailFragment(
-                        product.id.toString()
-                    )
-                Navigation.findNavController(it).navigate(action)
+                onProductNavigateClickListener.navigate(product)
+
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.pelsinkaplan.upschoolcapstoneproject.ui.fragment
+package com.pelsinkaplan.upschoolcapstoneproject.ui.viewmodel.beforelogin
 
 /**
  * Created by Pelşin KAPLAN on 13.06.2022.
@@ -13,6 +13,7 @@ import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.pelsinkaplan.upschoolcapstoneproject.R
+import timber.log.Timber
 
 
 class RegisterViewModel : ViewModel() {
@@ -65,7 +66,8 @@ class RegisterViewModel : ViewModel() {
                                 user!!.updateProfile(profileUpdates)
                                     .addOnCompleteListener {
                                         if (task.isSuccessful) {
-                                            Log.d("USER DISPLAY NAME", "User profile updated.")
+                                            Timber.tag("USER DISPLAY NAME")
+                                                .d("User profile updated.")
                                         }
                                     }
                                 Navigation.findNavController(view)

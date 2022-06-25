@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.card.MaterialCardView xmlns:tools="http://schemas.android.com/tools"
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/productCardView"
-        android:layout_width="150dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
         app:contentPadding="10dp"
@@ -22,6 +25,7 @@
 
             <ImageView
                 android:id="@+id/productImageView"
+                android:contentDescription="@string/product_image"
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
                 android:scaleType="centerCrop"
@@ -39,8 +43,7 @@
                 android:gravity="center_vertical"
                 android:maxLines="1"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/productImageView"
@@ -52,12 +55,22 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="4dp"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/productTitleTextView"
                 tools:text="Price" />
+
+            <ImageView
+                android:contentDescription="@string/sale_icon"
+                android:id="@+id/saleImageView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="100dp"
+                android:src="@drawable/ic_sale"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

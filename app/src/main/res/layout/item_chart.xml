@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.card.MaterialCardView xmlns:tools="http://schemas.android.com/tools"
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/chartCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,6 +26,7 @@
                     android:layout_width="100dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="15dp"
+                    android:contentDescription="@string/product_image"
                     android:src="@mipmap/ic_launcher_round"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -37,15 +38,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="32dp"
-                    android:text="Product Name"
-                    android:textSize="20dp"
+                    android:text="@string/product_name"
+                    android:textSize="12sp"
                     app:layout_constraintStart_toEndOf="@+id/product_img_imageView"
                     app:layout_constraintTop_toTopOf="@+id/product_img_imageView" />
 
                 <Button
                     android:id="@+id/deleteButton"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:background="@drawable/ic_trash"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/productPriceTextView"
@@ -54,8 +55,8 @@
 
                 <Button
                     android:id="@+id/minusButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/ic_minus"
@@ -68,7 +69,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="1"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/minusButton"
                     app:layout_constraintStart_toEndOf="@id/minusButton"
@@ -76,8 +76,8 @@
 
                 <Button
                     android:id="@+id/plusButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginStart="16dp"
                     android:background="@drawable/ic_plus"
                     app:layout_constraintBottom_toBottomOf="@+id/productAmountTextview"
@@ -89,8 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="$00.00"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/productTitleTextView"
                     app:layout_constraintEnd_toEndOf="parent"

@@ -17,7 +17,7 @@ class StartFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentStartBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -26,11 +26,14 @@ class StartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             loginButton.setOnClickListener {
-                Navigation.findNavController(view).navigate(R.id.action_startFragment_to_loginFragment)
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_startFragment_to_loginFragment)
             }
             registerButton.setOnClickListener {
-                Navigation.findNavController(view).navigate(R.id.action_startFragment_to_registerFragment)
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_startFragment_to_registerFragment)
             }
+            binding.startAnimation.playAnimation()
         }
     }
 }

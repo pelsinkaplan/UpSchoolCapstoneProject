@@ -19,7 +19,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.pelsinkaplan.upschoolcapstoneproject.ui.custom.CustomImageView
-            android:id="@+id/productImageCustomImageView"
+            android:id="@+id/bottomProductImageCustomImageView"
+            android:layout_width="0dp"
+            android:layout_height="350dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/productTitleCustomTextView" />
+
+        <com.pelsinkaplan.upschoolcapstoneproject.ui.custom.CustomImageView
+            android:id="@+id/topProductImageCustomImageView"
             android:layout_width="0dp"
             android:layout_height="350dp"
             android:layout_marginTop="16dp"
@@ -35,7 +44,7 @@
             app:layout_constraintBottom_toTopOf="@+id/addToChartButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productImageCustomImageView">
+            app:layout_constraintTop_toBottomOf="@+id/topProductImageCustomImageView">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -71,7 +80,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="32dp"
             android:enabled="false"
-            android:text="Add to Chart"
+            android:text="@string/add_to_bag"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/addToFavoritesButton"
             app:layout_constraintStart_toStartOf="parent" />

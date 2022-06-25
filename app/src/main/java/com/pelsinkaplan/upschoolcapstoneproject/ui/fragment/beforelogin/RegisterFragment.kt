@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.pelsinkaplan.upschoolcapstoneproject.databinding.FragmentRegisterBinding
-import com.pelsinkaplan.upschoolcapstoneproject.ui.fragment.RegisterViewModel
+import com.pelsinkaplan.upschoolcapstoneproject.ui.viewmodel.beforelogin.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

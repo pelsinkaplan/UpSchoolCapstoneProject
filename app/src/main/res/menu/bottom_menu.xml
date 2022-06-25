@@ -3,18 +3,27 @@
 
     <item
         android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
         android:menuCategory="secondary"
-        android:title="Home" />
+        android:title="@string/home" />
     <item
         android:id="@+id/categoriesFragment"
+        android:icon="@drawable/ic_categories"
         android:menuCategory="secondary"
-        android:title="Shop" />
+        android:title="@string/shop" />
+    <item
+        android:id="@+id/favoritesFragment"
+        android:icon="@drawable/ic_favorites"
+        android:menuCategory="secondary"
+        android:title="@string/favorites" />
     <item
         android:id="@+id/chartFragment"
+        android:icon="@drawable/ic_bag"
         android:menuCategory="secondary"
-        android:title="Bag" />
+        android:title="@string/bag" />
     <item
         android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_profile"
         android:menuCategory="secondary"
-        android:title="Profile" />
+        android:title="@string/profile" />
 </menu>

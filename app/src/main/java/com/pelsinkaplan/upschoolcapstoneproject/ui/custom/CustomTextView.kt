@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.pelsinkaplan.upschoolcapstoneproject.databinding.CustomProfileDetailLineBinding
 import com.pelsinkaplan.upschoolcapstoneproject.databinding.CustomTextViewBinding
 
 /**

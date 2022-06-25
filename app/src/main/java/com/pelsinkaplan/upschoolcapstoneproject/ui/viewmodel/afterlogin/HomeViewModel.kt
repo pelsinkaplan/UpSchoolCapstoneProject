@@ -12,7 +12,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val retrofitAPI: RetrofitAPI) : ViewModel() {
     suspend fun service(): ArrayList<Product>? {
-        val dataResponse = retrofitAPI.getProductList(10)
+        val dataResponse = retrofitAPI.getProductsByUser("bazaarapp", "desc", "10")
         if (dataResponse.isSuccessful)
             return dataResponse.body()
         return null

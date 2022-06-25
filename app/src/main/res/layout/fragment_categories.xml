@@ -8,29 +8,44 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/searchInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/viewAllProductsButton">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/searchInputEditText"
+                style="@style/InputTextViewStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:hint="@string/please_type_category" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/viewAllProductsButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
-            android:layout_margin="24dp"
-            android:text="View All Items"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/button"
+            android:text="@string/view_all_items"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/choose_category"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchInputLayout" />
 
@@ -38,12 +53,11 @@
             android:id="@+id/productRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="24dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/viewAllProductsButton"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
             tools:listitem="@layout/item_category" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,8 +11,8 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class CategoriesViewModel @Inject constructor(private val retrofitAPI: RetrofitAPI) : ViewModel() {
-    suspend fun service(): List<String>? {
-        val dataResponse = retrofitAPI.getCategories()
+    suspend fun service(): ArrayList<String>? {
+        val dataResponse = retrofitAPI.getCategoriesByUser("bazaarapp")
         if (dataResponse.isSuccessful)
             return dataResponse.body()
         return null

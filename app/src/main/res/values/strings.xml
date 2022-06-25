@@ -1,5 +1,50 @@
 <resources>
     <string name="app_name">Bazaar</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="categories">Categories</string>
+    <string name="payment">Payment</string>
+    <string name="profile">Profile</string>
+    <string name="products">Products</string>
+    <string name="bag">Bag</string>
+    <string name="favorites">Favorites</string>
+    <string name="view_all_items">View All Items</string>
+    <string name="choose_category">Choose Category</string>
+    <string name="please_type_category">Please type category</string>
+    <string name="empty_favorites_message">You can visit the products to add them to your favourites.</string>
+    <string name="order_success_message">Your order has been received.</string>
+    <string name="back_to_shopping">Back to Shopping</string>
+    <string name="home">Home</string>
+    <string name="shop">Shop</string>
+    <string name="product_name">Product Name</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="log_out">Log Out</string>
+    <string name="empty_bag">Empty Bag</string>
+    <string name="check_out">Check Out</string>
+    <string name="please_type_your_address">Please type your address</string>
+    <string name="address">Address</string>
+    <string name="save">SAVE</string>
+    <string name="new_product_icon">new product icon</string>
+    <string name="product_image">product image</string>
+    <string name="sale_icon">sale icon</string>
+    <string name="advertisement_image">advertisement image</string>
+    <string name="fashion_sale">Fashion Sale</string>
+    <string name="check">Check</string>
+    <string name="logo">logo</string>
+    <string name="login">LOGIN</string>
+    <string name="not_a_member">Not a member?</string>
+    <string name="register">Register</string>
+    <string name="e_mail">E-mail</string>
+    <string name="send_reset_mail">SEND RESET MAIL</string>
+    <string name="name_surname">Name Surname</string>
+    <string name="password">Password</string>
+    <string name="password_again">Password Again</string>
+    <string name="register_big_letter">REGISTER</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="edit_address_payment_string">If you want to edit your address, please click the address area.</string>
+    <string name="card_id">Card Id</string>
+    <string name="card_expire_date">Card Expire Date</string>
+    <string name="cvc">CVC</string>
+    <string name="confirm">Confirm</string>
+    <string name="add_to_bag">Add to Bag</string>
+
+
 </resources>

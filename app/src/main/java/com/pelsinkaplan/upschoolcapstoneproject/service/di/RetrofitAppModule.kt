@@ -2,6 +2,7 @@ package com.pelsinkaplan.upschoolcapstoneproject.service.di
 
 import com.pelsinkaplan.upschoolcapstoneproject.service.network.RetrofitAPI
 import com.pelsinkaplan.upschoolcapstoneproject.service.utils.Constants.BASE_URL
+import com.pelsinkaplan.upschoolcapstoneproject.service.utils.Constants.CANER_BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,6 +36,6 @@ object RetrofitAppModule {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .client(provideOkhttp())
-            .baseUrl(BASE_URL).build().create(RetrofitAPI::class.java)
+            .baseUrl(CANER_BASE_URL).build().create(RetrofitAPI::class.java)
     }
 }
