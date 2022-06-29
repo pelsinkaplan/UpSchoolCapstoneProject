@@ -21,6 +21,7 @@ class ChartViewModel @Inject constructor(private val retrofitAPI: RetrofitAPI) :
     }
 
     suspend fun deleteProductFromBag(id: Int) {
+        Timber.tag("DELETED ITEM").e(id.toString())
         val dataResponse = retrofitAPI.deleteFromBag(id)
         Timber.tag("BAG CONTENT").e(dataResponse.message)
     }

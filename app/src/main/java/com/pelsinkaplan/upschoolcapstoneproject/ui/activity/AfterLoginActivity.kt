@@ -74,9 +74,6 @@ class AfterLoginActivity : AppCompatActivity() {
                     R.id.profileFragment -> {
                         pageTitleTextView.text = getString(R.string.profile)
                     }
-                    R.id.paymentFragment -> {
-                        pageTitleTextView.text = getString(R.string.payment)
-                    }
                     else -> {
                         pageTitleTextView.text = ""
                     }

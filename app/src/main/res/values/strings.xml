@@ -45,6 +45,11 @@
     <string name="cvc">CVC</string>
     <string name="confirm">Confirm</string>
     <string name="add_to_bag">Add to Bag</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lets_shop">Let\'s Shop</string>
+    <string name="banner_item_image">banner item image</string>
+    <string name="success_popup_image">success popup image</string>
 
 
 </resources>

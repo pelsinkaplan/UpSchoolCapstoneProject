@@ -13,10 +13,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.pelsinkaplan.upschoolcapstoneproject.R
-import com.pelsinkaplan.upschoolcapstoneproject.databinding.AddressBottomSheetBinding
-import com.pelsinkaplan.upschoolcapstoneproject.databinding.FragmentChartBinding
-import com.pelsinkaplan.upschoolcapstoneproject.databinding.FragmentPaymentBinding
-import com.pelsinkaplan.upschoolcapstoneproject.databinding.PopupBinding
+import com.pelsinkaplan.upschoolcapstoneproject.databinding.*
 import com.pelsinkaplan.upschoolcapstoneproject.ui.viewmodel.afterlogin.ChartViewModel
 import com.pelsinkaplan.upschoolcapstoneproject.ui.viewmodel.afterlogin.PaymentViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -75,7 +72,8 @@ class PaymentFragment : Fragment() {
             }
             confirmButton.setOnClickListener {
                 lateinit var popup: AlertDialog
-                val alertBinding = PopupBinding.inflate(LayoutInflater.from(requireContext()))
+                val alertBinding =
+                    ConfirmOrderPopupBinding.inflate(LayoutInflater.from(requireContext()))
                 val builder = AlertDialog.Builder(requireContext())
                 alertBinding.apply {
                     backToShopButton.setOnClickListener {

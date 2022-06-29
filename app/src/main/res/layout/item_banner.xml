@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/bannerImageView"
+            android:layout_width="0dp"
+            android:layout_height="400dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/banner_item_image" />
+
+        <TextView
+            android:id="@+id/bannerDescTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="@+id/bannerImageView"
+            app:layout_constraintStart_toStartOf="@+id/bannerImageView"
+            app:layout_constraintTop_toBottomOf="@+id/bannerImageView" />
+
+        <Button
+            android:id="@+id/letsShopButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:layout_margin="24dp"
+            android:visibility="gone"
+            android:text="@string/lets_shop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bannerDescTextView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

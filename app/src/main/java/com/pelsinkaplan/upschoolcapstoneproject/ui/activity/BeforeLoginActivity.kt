@@ -27,12 +27,24 @@ class BeforeLoginActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(binding.fragmentContainerView.id) as NavHostFragment
         val navController = navHostFragment.navController
         val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.startFragment)
+            setOf(R.id.startFragment, R.id.bannerFragment)
         )
         binding.toolbar.setupWithNavController(
             navController,
             appBarConfiguration
         )
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.bannerFragment -> binding.toolbar.visibility = View.GONE
+                else -> binding.toolbar.visibility = View.VISIBLE
+            }
+        }
+
+        if (this.getSharedPreferences("MorParaSharedPreferences", MODE_PRIVATE)
+                .getBoolean("firstLogin", false)
+        )
+            navController.navigate(R.id.startFragment)
     }
 
     override fun onSupportNavigateUp(): Boolean {

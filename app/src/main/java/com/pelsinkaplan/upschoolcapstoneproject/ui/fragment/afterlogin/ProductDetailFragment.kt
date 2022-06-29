@@ -48,7 +48,7 @@ class ProductDetailFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
         favoritesDatabase = FavoritesDatabase.getFavoritesDatabase(requireContext())!!
-        val favoritesList = favoritesDatabase.getFavoritesDao().getAll()
+        var favoritesList = favoritesDatabase.getFavoritesDao().getAll()
         val args: ProductDetailFragmentArgs by navArgs()
         val product = args.product
         val userId = FirebaseAuth.getInstance().currentUser!!.uid
@@ -81,25 +81,29 @@ class ProductDetailFragment : Fragment() {
                     .into(imageView)
                 setImageViewVisible()
             }
-
-            if (favoritesList.contains(product)) {
-                addToFavoritesButton.apply {
-                    setBackgroundResource(R.drawable.ic_favorite)
-                    setOnClickListener {
+            addToFavoritesButton.setOnClickListener {
+                favoritesList = favoritesDatabase.getFavoritesDao().getAll()
+                if (favoritesList.contains(product)) {
+                    addToFavoritesButton.apply {
                         favoritesDatabase.getFavoritesDao().delete(product)
                         setBackgroundResource(R.drawable.ic_not_favorite)
                     }
-                }
-            } else {
-                addToFavoritesButton.apply {
-                    setBackgroundResource(R.drawable.ic_not_favorite)
-                    setOnClickListener {
+                } else {
+                    addToFavoritesButton.apply {
                         favoritesDatabase.getFavoritesDao().insert(product)
                         setBackgroundResource(R.drawable.ic_favorite)
                     }
                 }
             }
-
+            if (favoritesList.contains(product)) {
+                addToFavoritesButton.apply {
+                    setBackgroundResource(R.drawable.ic_favorite)
+                }
+            } else {
+                addToFavoritesButton.apply {
+                    setBackgroundResource(R.drawable.ic_not_favorite)
+                }
+            }
             addToChartButton.isEnabled = true
             addToChartButton.setOnClickListener {
                 CoroutineScope(Dispatchers.Main).launch {

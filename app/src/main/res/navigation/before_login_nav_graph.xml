@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/before_login_nav_graph"
-    app:startDestination="@id/startFragment">
+    app:startDestination="@id/bannerFragment">
 
     <fragment
         android:id="@+id/startFragment"
@@ -47,5 +47,13 @@
         <action
             android:id="@+id/action_forgetPasswordFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bannerFragment"
+        android:name="com.pelsinkaplan.upschoolcapstoneproject.ui.fragment.beforelogin.BannerFragment"
+        android:label="BannerFragment" >
+        <action
+            android:id="@+id/action_bannerFragment_to_startFragment"
+            app:destination="@id/startFragment" />
     </fragment>
 </navigation>
