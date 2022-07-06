@@ -25,7 +25,7 @@ This repo contains the source codes of my UpSchool Capstone Project. It is prese
 
 Uygulamanın çalışma gifi:
 
-<img src="" width="200" height="400">
+<img src="https://github.com/pelsinkaplan/UpSchoolCapstoneProject/blob/master/bazaar_app_gif.gif" width="200" height="400">
 
 
 
